@@ -1,0 +1,38 @@
+In luna numarul  1 a anului trecut au absentat 50 angajati.
+In luna numarul  2 a anului trecut au absentat 72 angajati.
+In luna numarul  3 a anului trecut au absentat 87 angajati.
+In luna numarul  4 a anului trecut au absentat 53 angajati.
+In luna numarul  5 a anului trecut au absentat 64 angajati.
+In luna numarul  6 a anului trecut au absentat 54 angajati.
+In luna numarul  7 a anului trecut au absentat 67 angajati.
+In luna numarul  8 a anului trecut au absentat 54 angajati.
+In luna numarul  9 a anului trecut au absentat 53 angajati.
+In luna numarul 10 a anului trecut au absentat 71 angajati.
+In luna numarul 11 a anului trecut au absentat 63 angajati.
+In luna numarul 12 a anului trecut au absentat 49 angajati.
+Au fost 3 angajati care nu au absentat nici macar o ora anul trecut.
+
+
+
+In ziua 1 a saptamanii a inceput absentarea pentru 161 angajati.
+In ziua 2 a saptamanii a inceput absentarea pentru 154 angajati.
+In ziua 3 a saptamanii a inceput absentarea pentru 156 angajati.
+In ziua 4 a saptamanii a inceput absentarea pentru 125 angajati.
+In ziua 5 a saptamanii a inceput absentarea pentru 144 angajati.
+
+
+
+Distanta medie pe care angajatii o parcurg de acasa la locul de munca lunar este 29.63 kilometri.
+Varsta medie a angajatilor la care au inceput sa lucreze la firma este 29.63 lei.
+Coeficientul mediu zilnic de munca (nivelul de dificultate) variaza intre 205.917007 si 378.884003.
+Randamentul mediu al angajatilor este 94.59%.
+Procentul de angajati sanctionati disciplinar este 5.41%.
+Procentul de angajati consumatori de alcool este 56.76%.
+Procentul de angajati fumatori este 7.30%.
+Angajatii au in medie 1.02 copii.
+Angajatii au in medie 0.75 animale de companie.
+Angajatii au in medie 79.04 kilograme.
+Inaltimea medie a angajatilor este 172.11 centimetri.
+Numarul mediu de ore pe care angajatii l-au absentat anul trecut este 6.92 ore, maximul fiind 120.
+Media armonica a valorii muncii pierdute din cauza absentarii este 93.68.
+Aceasta valoare reprezinta echivalentul a 0.35 zile pierdute de fiecare angajat in medie cu un randament de 100%.
