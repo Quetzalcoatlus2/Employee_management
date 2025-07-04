@@ -19,22 +19,36 @@
 5. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire cati angajati au absentat in fiecare zi a saptamananii.
 
 6. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire, folosindu-te de functii utilizator (impartire, procentaj, maxim, minim, medie armonica) diverse date derivate:
+   
    -distanta medie parcursa de angajati lunar intre rezidenta si locul de munca;
+   
    -varsta medie la care angajatii s-au angajat la firma;
+   
    -valorile maxime si minime ale coeficientului mediu zilnic de munca (valoarea muncii depuse de fiecare angajat);
+   
    -randamentul mediu al angajatilor;
+   
    -procentul de angajati sanctionati disciplinar;
+   
    -procentul de consumatori de alcool;
+   
    -procentul de fumatori;
+   
    -numarul mediu de copii;
+   
    -numarul mediu de animale de companie;
+   
    -greutatea medie;
+   
    -inaltimea medie;
+   
    -numarul mediu absentat de angajati anul trecut;
+   
    -media armonica a coeficientului zilnic de munca pierdut din absente;
+   
    -cate zile a pierdut, in medie, fiecare angajat, considerandu-se un randament de 100%.
 
-7. Se reprezinta in modul grafic numarul de angajati absenti pentru fiecare luna a anului precedent.
+8. Se reprezinta in modul grafic numarul de angajati absenti pentru fiecare luna a anului precedent.
 
 
 
