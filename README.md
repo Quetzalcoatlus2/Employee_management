@@ -1,7 +1,6 @@
 # Employee-management-in-C
 
-  Realizati un program in C in care sa va folositi de un fisier cu date de intrare pentru proiect ce va contine minim 10 inregistrari.
-Rezumatul programului:
+
 
 1. Fisierul cu date de intrare contine 740 de inregistrari si 17 campuri.
    Tema proiectului este absenteismul la munca, fisierul continand date despre 740 de angajati.
