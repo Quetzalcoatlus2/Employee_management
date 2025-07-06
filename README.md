@@ -2,54 +2,61 @@
 
 
 
-1. Fisierul cu date de intrare contine 740 de inregistrari si 17 campuri.
-   Tema proiectului este absenteismul la munca, fisierul continand date despre 740 de angajati.
+The input data file contains 740 records and 17 fields. The theme of the project is workplace absenteeism, and the file contains data about 740 employees.
 
-2. Datele din fisier sunt citite intr-o variabila de tip struct numita "absenteism" si sunt afisate in consola fara ca fisierul de intrare sa contina numarul de inregistrari.
+The data from the file is read into a struct variable named absenteeism, and displayed in the console, despite the input file not specifying the number of records.
 
-3. Utilizatorul poate acum alege o varianta de ordonare crescatoare in care criteriul dupa care se face sortarea va aparea pe prima coloana din 3 optiuni sau poate trece mai departe fara sa aleaga un tip de ordonare:
-   a) dupa costul lunar de deplasare la locul de munca a fiecarui angajat
-   b) dupa numarul de ani de cand fiecare angajat lucreaza la firma
-   c) dupa numarul de ore absentat in anul precedent
-   Dupa fiecare ordonare aleasa, utilizatorul poate alege sa mai faca o ordonare.
-   Cand utilizatorul a facut toate ordonarile dorite, acesta poate merge mai departe.
+The user can choose to perform ascending sorting, where the selected sorting criterion will be moved to the first column. The options are:
 
-4. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire cati angajati au absentat in fiecare luna si cati nu au absentat deloc.
+a) by the monthly commuting cost for each employee
 
-5. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire cati angajati au absentat in fiecare zi a saptamananii.
+b) by the number of years each employee has been working at the company
 
-6. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire, folosindu-te de functii utilizator (impartire, procentaj, maxim, minim, medie armonica) diverse date derivate:
-   
-   -distanta medie parcursa de angajati lunar intre rezidenta si locul de munca;
-   
-   -varsta medie la care angajatii s-au angajat la firma;
-   
-   -valorile maxime si minime ale coeficientului mediu zilnic de munca (valoarea muncii depuse de fiecare angajat);
-   
-   -randamentul mediu al angajatilor;
-   
-   -procentul de angajati sanctionati disciplinar;
-   
-   -procentul de consumatori de alcool;
-   
-   -procentul de fumatori;
-   
-   -numarul mediu de copii;
-   
-   -numarul mediu de animale de companie;
-   
-   -greutatea medie;
-   
-   -inaltimea medie;
-   
-   -numarul mediu absentat de angajati anul trecut;
-   
-   -media armonica a coeficientului zilnic de munca pierdut din absente;
-   
-   -cate zile a pierdut, in medie, fiecare angajat, considerandu-se un randament de 100%.
+c) by the number of hours absent in the previous year
 
-8. Se reprezinta in modul grafic numarul de angajati absenti pentru fiecare luna a anului precedent.
+After each sorting, the user can choose to sort again. Once all desired sorts have been performed, the user can proceed.
 
+The following are calculated, printed to the console, and written to the output file:
 
+The number of employees absent in each month
 
-   Baza de date de unde au fost luate datele din fisierul de intrare (17 coloane din 21): https://data.world/aaizemberg/absenteeismatwork/workspace/file?filename=Absenteeism_at_work.tsv
+The number of employees with no absences
+
+Also calculated, printed, and written to the output file:
+
+The number of employees absent on each day of the week
+
+Using user-defined functions (e.g., division, percentage, max, min, harmonic mean), the program also calculates:
+
+The average monthly commuting distance between residence and workplace
+
+The average age at which employees were hired
+
+The maximum and minimum values of the average daily work coefficient (indicating individual work contribution)
+
+The average employee performance
+
+The percentage of employees with disciplinary sanctions
+
+The percentage of alcohol consumers
+
+The percentage of smokers
+
+The average number of children
+
+The average number of pets
+
+The average weight
+
+The average height
+
+The average number of hours absent last year
+
+The harmonic mean of the daily lost work coefficient due to absenteeism
+
+The average number of days lost per employee, assuming 100% efficiency
+
+A graphical representation of the number of absent employees per month for the previous year is also generated.
+
+The database from which the input file was derived (17 out of 21 columns) is:
+https://data.world/aaizemberg/absenteeismatwork/workspace/file?filename=Absenteeism_at_work.tsv
