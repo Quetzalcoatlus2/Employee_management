@@ -5,7 +5,7 @@ Program summary:
 1. The input data file contains 740 records and 17 fields.
    The project topic is workplace absenteeism, and the file contains data about 740 employees.
 
-2. The data from the file is read into a struct variable named "absenteism" and displayed in the console,
+2. The data from the file is read into a struct variable named "absenteeism_record" and displayed in the console,
    even though the input file does not specify the number of records.
 
 3. The user can choose an ascending sorting option where the selected sort criterion appears in the first column,
@@ -68,13 +68,13 @@ int main(int argc, char** argv) {
 	int m=0;
 	int o=0;
 	int p=0;
-	int luni[13]={0};
-	int h[8]={0};
-	int max_ore=0;
-	float maxim=0;
-	float minim;
-	float armonic_pierderi=0;
-	float armonic_coef=0;
+	int monthly_absence_counts[13]={0};
+	int weekday_absence_counts[8]={0};
+	int max_absence_hours=0;
+	float max_daily_work_coefficient=0;
+	float min_daily_work_coefficient;
+	float harmonic_loss_sum=0;
+	float harmonic_coefficient_sum=0;
 
 
 
@@ -87,7 +87,7 @@ int main(int argc, char** argv) {
 		}
 
 
-	float proc(int x, int y){
+	float percentage(int x, int y){
 			float z;
 			z=(float)x*100/y;
 			return z;
@@ -110,7 +110,7 @@ int main(int argc, char** argv) {
 		}
 
 
-	float armonica(float x, float y, int z){
+	float harmonic_component(float x, float y, int z){
 		float w;
 		if(z!=0)
 		    w=100*8/(x*y*z);
@@ -122,24 +122,24 @@ int main(int argc, char** argv) {
 
 
 
-	struct absenteism {
-	    int luna_absenta;
-		int zi_saptamana_absenta;
-		int cost_transport_lunar;
-		int distanta_rezidenta_serviciu;
-		int vechime;
-		int varsta;
-		int randament;
-		int sanctionat_disciplinar;
-		int educatie;
-		int copii;
-		int consumator_alcool;
-		int fumator;
-		int animale;
-		int greutate;
-		int inaltime;
-		int ore_absenta;
-		float coef_munca_zilnic;
+	struct absenteeism_record {
+	    int absence_month;
+		int absence_weekday;
+		int monthly_transport_cost;
+		int residence_work_distance;
+		int years_at_company;
+		int age;
+		int performance;
+		int disciplinary_sanctioned;
+		int education;
+		int children;
+		int alcohol_consumer;
+		int smoker;
+		int pets;
+		int weight;
+		int height;
+		int absence_hours;
+		float daily_work_coefficient;
 
 	}a[800], u;
 
@@ -147,10 +147,10 @@ int main(int argc, char** argv) {
 
 
 
-	FILE *absenteism;
-	absenteism=fopen("input.txt", "r");
+	FILE *absenteeism_file;
+	absenteeism_file=fopen("input.txt", "r");
 
-	if(!absenteism){
+	if(!absenteeism_file){
 		printf("File error!!!");
 		return 1;
 	}
@@ -165,13 +165,13 @@ int main(int argc, char** argv) {
 
 
 
-	while(!feof(absenteism)){
+	while(!feof(absenteeism_file)){
 
-		fscanf(absenteism, "%d%d%d%d%d%d%f%d%d%d%d%d%d%d%d%d%d", &a[n].luna_absenta,
-				&a[n].zi_saptamana_absenta, &a[n].cost_transport_lunar, &a[n].distanta_rezidenta_serviciu,
-				&a[n].vechime, &a[n].varsta, &a[n].coef_munca_zilnic, &a[n].randament,
-				&a[n].sanctionat_disciplinar, &a[n].educatie, &a[n].copii, &a[n].consumator_alcool,
-				&a[n].fumator, &a[n].animale, &a[n].greutate, &a[n].inaltime, &a[n].ore_absenta);
+		fscanf(absenteeism_file, "%d%d%d%d%d%d%f%d%d%d%d%d%d%d%d%d%d", &a[n].absence_month,
+				&a[n].absence_weekday, &a[n].monthly_transport_cost, &a[n].residence_work_distance,
+				&a[n].years_at_company, &a[n].age, &a[n].daily_work_coefficient, &a[n].performance,
+				&a[n].disciplinary_sanctioned, &a[n].education, &a[n].children, &a[n].alcohol_consumer,
+				&a[n].smoker, &a[n].pets, &a[n].weight, &a[n].height, &a[n].absence_hours);
 
 
 
@@ -181,16 +181,16 @@ int main(int argc, char** argv) {
 				"%f                 %3d                   %d                       %d               %d "
 				"                 %d                %d              %d             %3d           %d    "
 				"       %3d\n",
-				a[n].luna_absenta, a[n].zi_saptamana_absenta,a[n].cost_transport_lunar,
-				a[n].distanta_rezidenta_serviciu, a[n].vechime, a[n].varsta,a[n].coef_munca_zilnic,
-				a[n].randament, a[n].sanctionat_disciplinar, a[n].educatie, a[n].copii,
-				a[n].consumator_alcool, a[n].fumator, a[n].animale, a[n].greutate, a[n].inaltime,
-				a[n].ore_absenta);
+				a[n].absence_month, a[n].absence_weekday,a[n].monthly_transport_cost,
+				a[n].residence_work_distance, a[n].years_at_company, a[n].age,a[n].daily_work_coefficient,
+				a[n].performance, a[n].disciplinary_sanctioned, a[n].education, a[n].children,
+				a[n].alcohol_consumer, a[n].smoker, a[n].pets, a[n].weight, a[n].height,
+				a[n].absence_hours);
 		n++;
 	}
 
 
-    fclose(absenteism);
+    fclose(absenteeism_file);
 
 
 
@@ -222,7 +222,7 @@ int main(int argc, char** argv) {
 		do{
 		flag=0;
 		for(i=0; i<n-1 ;i++)
-			if(a[i].cost_transport_lunar>a[i+1].cost_transport_lunar){
+			if(a[i].monthly_transport_cost>a[i+1].monthly_transport_cost){
 				u=a[i];
 				a[i]=a[i+1];
 				a[i+1]=u;
@@ -245,11 +245,11 @@ int main(int argc, char** argv) {
 					"%f                 %3d                   %d                       %d               %d "
 					"                 %d                %d              %d             %3d           %d    "
 					"       %3d\n",
-					a[i].cost_transport_lunar,a[i].luna_absenta, a[i].zi_saptamana_absenta,
-					a[i].distanta_rezidenta_serviciu, a[i].vechime, a[i].varsta,a[i].coef_munca_zilnic,
-					a[i].randament, a[i].sanctionat_disciplinar, a[i].educatie, a[i].copii,
-					a[i].consumator_alcool, a[i].fumator, a[i].animale, a[i].greutate, a[i].inaltime,
-					a[i].ore_absenta);
+					a[i].monthly_transport_cost,a[i].absence_month, a[i].absence_weekday,
+					a[i].residence_work_distance, a[i].years_at_company, a[i].age,a[i].daily_work_coefficient,
+					a[i].performance, a[i].disciplinary_sanctioned, a[i].education, a[i].children,
+					a[i].alcohol_consumer, a[i].smoker, a[i].pets, a[i].weight, a[i].height,
+					a[i].absence_hours);
 
 	}
 
@@ -261,7 +261,7 @@ int main(int argc, char** argv) {
 			do{
 			flag=0;
 			for(i=0; i<n-1 ;i++)
-				if(a[i].vechime>a[i+1].vechime){
+				if(a[i].years_at_company>a[i+1].years_at_company){
 					u=a[i];
 					a[i]=a[i+1];
 					a[i+1]=u;
@@ -286,11 +286,11 @@ int main(int argc, char** argv) {
 						"%f                   %3d                   %d                       "
 						"%d              %d                  %d                %d              "
 						"%d             %3d           %d          %3d\n",
-						a[i].vechime,a[i].luna_absenta, a[i].zi_saptamana_absenta,a[i].cost_transport_lunar,
-						a[i].distanta_rezidenta_serviciu, a[i].varsta,a[i].coef_munca_zilnic,
-						a[i].randament, a[i].sanctionat_disciplinar, a[i].educatie, a[i].copii,
-						a[i].consumator_alcool, a[i].fumator, a[i].animale, a[i].greutate, a[i].inaltime,
-						a[i].ore_absenta);
+						a[i].years_at_company,a[i].absence_month, a[i].absence_weekday,a[i].monthly_transport_cost,
+						a[i].residence_work_distance, a[i].age,a[i].daily_work_coefficient,
+						a[i].performance, a[i].disciplinary_sanctioned, a[i].education, a[i].children,
+						a[i].alcohol_consumer, a[i].smoker, a[i].pets, a[i].weight, a[i].height,
+						a[i].absence_hours);
 		}
 
 
@@ -300,7 +300,7 @@ int main(int argc, char** argv) {
 			do{
 					flag=0;
 					for(i=0; i<n-1 ;i++)
-						if(a[i].ore_absenta>a[i+1].ore_absenta){
+						if(a[i].absence_hours>a[i+1].absence_hours){
 							u=a[i];
 							a[i]=a[i+1];
 							a[i+1]=u;
@@ -321,10 +321,10 @@ int main(int argc, char** argv) {
 						         "                    %2d                               %2d                    %d                 "
 							     " %f                   %3d                    %d                     %d               %d "
 							     "                 %d                %d              %d             %3d           %d  \n",
-								 a[i].ore_absenta, a[i].luna_absenta, a[i].zi_saptamana_absenta,a[i].cost_transport_lunar,
-							     a[i].distanta_rezidenta_serviciu, a[i].vechime, a[i].varsta,a[i].coef_munca_zilnic,
-						         a[i].randament, a[i].sanctionat_disciplinar, a[i].educatie, a[i].copii,
-							     a[i].consumator_alcool, a[i].fumator, a[i].animale, a[i].greutate, a[i].inaltime);
+								 a[i].absence_hours, a[i].absence_month, a[i].absence_weekday,a[i].monthly_transport_cost,
+							     a[i].residence_work_distance, a[i].years_at_company, a[i].age,a[i].daily_work_coefficient,
+						         a[i].performance, a[i].disciplinary_sanctioned, a[i].education, a[i].children,
+							     a[i].alcohol_consumer, a[i].smoker, a[i].pets, a[i].weight, a[i].height);
 
 
 
@@ -347,54 +347,54 @@ int main(int argc, char** argv) {
 
 
     for(i=0; i<n; i++){
-	    switch(a[i].luna_absenta){
+	    switch(a[i].absence_month){
 	    case 1:
-			 luni[0]++;
+			 monthly_absence_counts[0]++;
 			 break;
 	    case 2:
-			 luni[1]++;
+			 monthly_absence_counts[1]++;
 			 break;
 	    case 3:
-			 luni[2]++;
+			 monthly_absence_counts[2]++;
 			 break;
 	    case 4:
-			 luni[3]++;
+			 monthly_absence_counts[3]++;
 			 break;
 	    case 5:
-			 luni[4]++;
+			 monthly_absence_counts[4]++;
 			 break;
 	    case 6:
-			 luni[5]++;
+			 monthly_absence_counts[5]++;
 			 break;
 	    case 7:
-			 luni[6]++;
+			 monthly_absence_counts[6]++;
 			 break;
 	    case 8:
-			 luni[7]++;
+			 monthly_absence_counts[7]++;
 			 break;
 	    case 9:
-			 luni[8]++;
+			 monthly_absence_counts[8]++;
 			 break;
 	    case 10:
-			 luni[9]++;
+			 monthly_absence_counts[9]++;
 			 break;
 	    case 11:
-			 luni[10]++;
+			 monthly_absence_counts[10]++;
 			 break;
 	    case 12:
-			 luni[11]++;
+			 monthly_absence_counts[11]++;
 			 break;
 	    case 0:
-	    	 luni[12]++;
+	    	 monthly_absence_counts[12]++;
 	    	 break;
  }}
 
 
 
-    FILE *absenteism_concluzii;
-    absenteism_concluzii=fopen("output.txt", "w");
+    FILE *conclusions_file;
+    conclusions_file=fopen("output.txt", "w");
 
-    if(!absenteism_concluzii){
+    if(!conclusions_file){
 	    printf("Error creating file!!!");
 	    return 1;
 	    }
@@ -402,12 +402,12 @@ int main(int argc, char** argv) {
 
 
     for(i=0; i<12; i++){
-	    printf("In month number %2d of last year, %d employees were absent.\n", i+1, luni[i]);
-	    fprintf(absenteism_concluzii, "In month number %2d of last year, %d employees were absent.\n", i+1, luni[i]);}
+	    printf("In month number %2d of last year, %d employees were absent.\n", i+1, monthly_absence_counts[i]);
+	    fprintf(conclusions_file, "In month number %2d of last year, %d employees were absent.\n", i+1, monthly_absence_counts[i]);}
 
 
-    printf("There were %d employees who were not absent for even one hour last year.\n", luni[12]);
-    fprintf(absenteism_concluzii, "There were %d employees who were not absent for even one hour last year.\n", luni[12]);
+    printf("There were %d employees who were not absent for even one hour last year.\n", monthly_absence_counts[12]);
+    fprintf(conclusions_file, "There were %d employees who were not absent for even one hour last year.\n", monthly_absence_counts[12]);
 
 
 	printf("\n\nEnter any number to continue with the number of employees whose absence started on a given weekday:");
@@ -415,40 +415,40 @@ int main(int argc, char** argv) {
     scanf("%ld", &b);
 
 
-	minim=a[0].coef_munca_zilnic+1;
+	min_daily_work_coefficient=a[0].daily_work_coefficient+1;
 
 
 
     for(i=0; i<n; i++){
 
-	    h[a[i].zi_saptamana_absenta-2]++;
-		b+=a[i].distanta_rezidenta_serviciu;
-	    c+=a[i].randament;
-	    d+=a[i].varsta-a[i].vechime;
-	    e+=a[i].sanctionat_disciplinar;
-	    f+=a[i].copii;
-	    g+=a[i].consumator_alcool;
-	    k+=a[i].fumator;
-	    l+=a[i].animale;
-	    m+=a[i].greutate;
-	    o+=a[i].inaltime;
-	    p+=a[i].ore_absenta;
+	    weekday_absence_counts[a[i].absence_weekday-2]++;
+		b+=a[i].residence_work_distance;
+	    c+=a[i].performance;
+	    d+=a[i].age-a[i].years_at_company;
+	    e+=a[i].disciplinary_sanctioned;
+	    f+=a[i].children;
+	    g+=a[i].alcohol_consumer;
+	    k+=a[i].smoker;
+	    l+=a[i].pets;
+	    m+=a[i].weight;
+	    o+=a[i].height;
+	    p+=a[i].absence_hours;
 
 
-    maxim=max(maxim, a[i].coef_munca_zilnic);
-    minim=min(minim, a[i].coef_munca_zilnic);
-    max_ore=max(max_ore, a[i].ore_absenta);
-    armonic_pierderi+=armonica(a[i].randament, a[i].coef_munca_zilnic, a[i].ore_absenta);
-    armonic_coef+=armonica(100, a[i].coef_munca_zilnic, 8);}
+    max_daily_work_coefficient=max(max_daily_work_coefficient, a[i].daily_work_coefficient);
+    min_daily_work_coefficient=min(min_daily_work_coefficient, a[i].daily_work_coefficient);
+    max_absence_hours=max(max_absence_hours, a[i].absence_hours);
+    harmonic_loss_sum+=harmonic_component(a[i].performance, a[i].daily_work_coefficient, a[i].absence_hours);
+    harmonic_coefficient_sum+=harmonic_component(100, a[i].daily_work_coefficient, 8);}
 
 
 
-    fprintf(absenteism_concluzii, "\n\n\n");
+    fprintf(conclusions_file, "\n\n\n");
 
 
     for(i=0; i<5; i++){
-	    printf("\nOn day %d of the week, absence started for %3d employees.", i+1, h[i]);
-	    fprintf(absenteism_concluzii, "On day %d of the week, absence started for %3d employees.\n", i+1, h[i]);}
+	    printf("\nOn day %d of the week, absence started for %3d employees.", i+1, weekday_absence_counts[i]);
+	    fprintf(conclusions_file, "On day %d of the week, absence started for %3d employees.\n", i+1, weekday_absence_counts[i]);}
 
 
     printf("\n\n\nEnter any number to continue with other values derived from the input data:");
@@ -458,46 +458,46 @@ int main(int argc, char** argv) {
 
 
 	printf("\nThe average monthly distance employees travel from home to work is %.2f kilometers.\n", div(b,n));
-    fprintf(absenteism_concluzii,"\n\n\nThe average monthly distance employees travel from home to work is %.2f kilometers.\n", div(b,n));
+    fprintf(conclusions_file,"\n\n\nThe average monthly distance employees travel from home to work is %.2f kilometers.\n", div(b,n));
 
 	printf("The average age at which employees started working at the company is %.2f years.\n", div(d,n));
-	fprintf(absenteism_concluzii, "The average age at which employees started working at the company is %.2f years.\n", div(d,n));
+	fprintf(conclusions_file, "The average age at which employees started working at the company is %.2f years.\n", div(d,n));
 
-	printf("The average daily work coefficient (work value contributed by each employee) ranges between %.6f and %.6f.\n", minim, maxim);
-	fprintf(absenteism_concluzii, "The average daily work coefficient (difficulty level) ranges between %.6f and %.6f.\n", minim, maxim);
+	printf("The average daily work coefficient (work value contributed by each employee) ranges between %.6f and %.6f.\n", min_daily_work_coefficient, max_daily_work_coefficient);
+	fprintf(conclusions_file, "The average daily work coefficient (difficulty level) ranges between %.6f and %.6f.\n", min_daily_work_coefficient, max_daily_work_coefficient);
 
     printf("The average employee performance is %.2f%%.\n", div(c, n));
-	fprintf(absenteism_concluzii, "The average employee performance is %.2f%%.\n", div(c, n));
+	fprintf(conclusions_file, "The average employee performance is %.2f%%.\n", div(c, n));
 
-	printf("The percentage of employees with disciplinary sanctions is %.2f%%.\n", proc(e, n));
-	fprintf(absenteism_concluzii, "The percentage of employees with disciplinary sanctions is %.2f%%.\n", proc(e, n));
+	printf("The percentage of employees with disciplinary sanctions is %.2f%%.\n", percentage(e, n));
+	fprintf(conclusions_file, "The percentage of employees with disciplinary sanctions is %.2f%%.\n", percentage(e, n));
 
-	printf("The percentage of employees who consume alcohol is %.2f%%.\n", proc(g, n));
-	fprintf(absenteism_concluzii,"The percentage of employees who consume alcohol is %.2f%%.\n", proc(g, n));
+	printf("The percentage of employees who consume alcohol is %.2f%%.\n", percentage(g, n));
+	fprintf(conclusions_file,"The percentage of employees who consume alcohol is %.2f%%.\n", percentage(g, n));
 
-	printf("The percentage of employees who smoke is %.2f%%.\n", proc(k, n));
-	fprintf(absenteism_concluzii, "The percentage of employees who smoke is %.2f%%.\n", proc(k, n));
+	printf("The percentage of employees who smoke is %.2f%%.\n", percentage(k, n));
+	fprintf(conclusions_file, "The percentage of employees who smoke is %.2f%%.\n", percentage(k, n));
 
 	printf("Employees have an average of %.2f children.\n", div(f, n));
-	fprintf(absenteism_concluzii, "Employees have an average of %.2f children.\n",  div(f, n));
+	fprintf(conclusions_file, "Employees have an average of %.2f children.\n",  div(f, n));
 
 	printf("Employees have an average of %.2f pets.\n",  div(l, n));
-	fprintf(absenteism_concluzii, "Employees have an average of %.2f pets.\n",  div(l, n));
+	fprintf(conclusions_file, "Employees have an average of %.2f pets.\n",  div(l, n));
 
 	printf("Employees have an average weight of %.2f kilograms.\n",  div(m, n));
-	fprintf(absenteism_concluzii, "Employees have an average weight of %.2f kilograms.\n", div(m, n));
+	fprintf(conclusions_file, "Employees have an average weight of %.2f kilograms.\n", div(m, n));
 
 	printf("The average employee height is %.2f centimeters.\n",  div(o, n));
-	fprintf(absenteism_concluzii, "The average employee height is %.2f centimeters.\n",  div(o, n));
+	fprintf(conclusions_file, "The average employee height is %.2f centimeters.\n",  div(o, n));
 
-	printf("The average number of hours employees were absent last year is %.2f hours, with a maximum of %d.\n", div(p, n), max_ore);
-	fprintf(absenteism_concluzii, "The average number of hours employees were absent last year is %.2f hours, with a maximum of %d.\n",  div(p, n), max_ore);
+	printf("The average number of hours employees were absent last year is %.2f hours, with a maximum of %d.\n", div(p, n), max_absence_hours);
+	fprintf(conclusions_file, "The average number of hours employees were absent last year is %.2f hours, with a maximum of %d.\n",  div(p, n), max_absence_hours);
 
-	printf("The harmonic mean of work value lost due to absenteeism is %.2f.\n", (float)n/armonic_pierderi);
-	fprintf(absenteism_concluzii, "The harmonic mean of work value lost due to absenteeism is %.2f.\n", (float)n/armonic_pierderi);
+	printf("The harmonic mean of work value lost due to absenteeism is %.2f.\n", (float)n/harmonic_loss_sum);
+	fprintf(conclusions_file, "The harmonic mean of work value lost due to absenteeism is %.2f.\n", (float)n/harmonic_loss_sum);
 
-	printf("This value represents the equivalent of %.2f days lost on average per employee at 100%% performance.", (float)n/armonic_pierderi/(n/armonic_coef));
-	fprintf(absenteism_concluzii, "This value represents the equivalent of %.2f days lost on average per employee at 100%% performance.", (float)n/armonic_pierderi/(n/armonic_coef));
+	printf("This value represents the equivalent of %.2f days lost on average per employee at 100%% performance.", (float)n/harmonic_loss_sum/(n/harmonic_coefficient_sum));
+	fprintf(conclusions_file, "This value represents the equivalent of %.2f days lost on average per employee at 100%% performance.", (float)n/harmonic_loss_sum/(n/harmonic_coefficient_sum));
 
 
 
@@ -506,7 +506,7 @@ int main(int argc, char** argv) {
 	        scanf("%d", &i);
 
 
-	fclose(absenteism_concluzii);
+	fclose(conclusions_file);
 
 
 
@@ -522,12 +522,12 @@ int main(int argc, char** argv) {
 			glColor4f(0.6f, i/10.f, -i/5.f, i/5.f);
 			glVertex2f(-0.95+i*0.14, -0.9);
 			glVertex2f(-0.82+i*0.14, -0.9);
-			glVertex2f(-0.82+i*0.14, -0.9+luni[i]/60.);
-			glVertex2f(-0.95+i*0.14, -0.9+luni[i]/60.);
+			glVertex2f(-0.82+i*0.14, -0.9+monthly_absence_counts[i]/60.);
+			glVertex2f(-0.95+i*0.14, -0.9+monthly_absence_counts[i]/60.);
 			glEnd();
 
-			glRasterPos2f(-0.90+i*0.14, -0.85+luni[i]/60.);
-			sprintf(string, "%d" ,luni[i]);
+			glRasterPos2f(-0.90+i*0.14, -0.85+monthly_absence_counts[i]/60.);
+			sprintf(string, "%d" ,monthly_absence_counts[i]);
 			for(j=0; j<strlen(string); j++)
 				glutBitmapCharacter(8, string[j]);
 
@@ -542,12 +542,12 @@ int main(int argc, char** argv) {
 		glColor4f(1.0f, 1.0f, 1.0f, 0.5f);
 		glVertex2f(0.73, -0.9);
 		glVertex2f(0.86, -0.9);
-		glVertex2f(0.86, -0.9+luni[12]/60.);
-		glVertex2f(0.73, -0.9+luni[12]/60.);
+		glVertex2f(0.86, -0.9+monthly_absence_counts[12]/60.);
+		glVertex2f(0.73, -0.9+monthly_absence_counts[12]/60.);
 		glEnd();
 
-		glRasterPos2f(0.78, -0.85+luni[12]/60.);
-		sprintf(string, "%d" ,luni[12]);
+		glRasterPos2f(0.78, -0.85+monthly_absence_counts[12]/60.);
+		sprintf(string, "%d" ,monthly_absence_counts[12]);
 		for(j=0; j<strlen(string); j++)
 			glutBitmapCharacter(8, string[j]);
 
@@ -579,4 +579,3 @@ int main(int argc, char** argv) {
 
 	return 0;
 }
-
