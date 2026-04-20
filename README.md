@@ -1,62 +1,43 @@
-# Employee-management
+# Employee Management (Workplace Absenteeism Analysis)
 
+## Overview
+This project is a C application that analyzes a workplace absenteeism dataset with **740 records** and **17 fields**.
+It reads employee data from an input file, supports interactive sorting, computes summary statistics, and writes conclusions to an output file.
 
+## Features
+- Loads and displays all employee records from the input dataset.
+- Supports repeated ascending sorts by:
+  - Monthly transportation cost
+  - Years of service
+  - Hours absent in the previous year
+- Calculates and reports:
+  - Absent employees per month
+  - Employees with zero absence
+  - Absence start counts by weekday
+  - Derived metrics (averages, percentages, min/max, harmonic means)
+- Generates a simple OpenGL bar chart for absenteeism by month.
 
-The input data file contains 740 records and 17 fields. The theme of the project is workplace absenteeism, and the file contains data about 740 employees.
+## Input and Output Files
+- **Input:** `input.txt`
+- **Output:** `output.txt`
 
-The data from the file is read into a struct variable named absenteeism, and displayed in the console, despite the input file not specifying the number of records.
+## Build
+This project depends on OpenGL/GLUT and a C compiler.
 
-The user can choose to perform ascending sorting, where the selected sorting criterion will be moved to the first column. The options are:
+Example build command:
 
-a) by the monthly commuting cost for each employee
+```bash
+gcc 1.c -o employee_management -lglut -lGL -lGLU
+```
 
-b) by the number of years each employee has been working at the company
+## Run
+```bash
+./employee_management
+```
 
-c) by the number of hours absent in the previous year
+The program is interactive and prompts for sorting and analysis steps in the terminal.
 
-After each sorting, the user can choose to sort again. Once all desired sorts have been performed, the user can proceed.
-
-The following are calculated, printed to the console, and written to the output file:
-
-The number of employees absent in each month
-
-The number of employees with no absences
-
-Also calculated, printed, and written to the output file:
-
-The number of employees absent on each day of the week
-
-Using user-defined functions (e.g., division, percentage, max, min, harmonic mean), the program also calculates:
-
-The average monthly commuting distance between residence and workplace
-
-The average age at which employees were hired
-
-The maximum and minimum values of the average daily work coefficient (indicating individual work contribution)
-
-The average employee performance
-
-The percentage of employees with disciplinary sanctions
-
-The percentage of alcohol consumers
-
-The percentage of smokers
-
-The average number of children
-
-The average number of pets
-
-The average weight
-
-The average height
-
-The average number of hours absent last year
-
-The harmonic mean of the daily lost work coefficient due to absenteeism
-
-The average number of days lost per employee, assuming 100% efficiency
-
-A graphical representation of the number of absent employees per month for the previous year is also generated.
-
-The database from which the input file was derived (17 out of 21 columns) is:
+## Data Source
+The dataset used in this project is based on:
 https://data.world/aaizemberg/absenteeismatwork/workspace/file?filename=Absenteeism_at_work.tsv
+(17 selected columns out of 21)
