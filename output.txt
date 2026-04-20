@@ -1,0 +1,38 @@
+In month number  1 of last year, 50 employees were absent.
+In month number  2 of last year, 72 employees were absent.
+In month number  3 of last year, 87 employees were absent.
+In month number  4 of last year, 53 employees were absent.
+In month number  5 of last year, 64 employees were absent.
+In month number  6 of last year, 54 employees were absent.
+In month number  7 of last year, 67 employees were absent.
+In month number  8 of last year, 54 employees were absent.
+In month number  9 of last year, 53 employees were absent.
+In month number 10 of last year, 71 employees were absent.
+In month number 11 of last year, 63 employees were absent.
+In month number 12 of last year, 49 employees were absent.
+There were 3 employees who were not absent for even one hour last year.
+
+
+
+On day 1 of the week, absence started for 161 employees.
+On day 2 of the week, absence started for 154 employees.
+On day 3 of the week, absence started for 156 employees.
+On day 4 of the week, absence started for 125 employees.
+On day 5 of the week, absence started for 144 employees.
+
+
+
+The average monthly distance employees travel from home to work is 29.63 kilometers.
+The average age at which employees started working at the company is 29.63 years.
+The average daily work coefficient (difficulty level) ranges between 205.917007 and 378.884003.
+The average employee performance is 94.59%.
+The percentage of employees with disciplinary sanctions is 5.41%.
+The percentage of employees who consume alcohol is 56.76%.
+The percentage of employees who smoke is 7.30%.
+Employees have an average of 1.02 children.
+Employees have an average of 0.75 pets.
+Employees have an average weight of 79.04 kilograms.
+The average employee height is 172.11 centimeters.
+The average number of hours employees were absent last year is 6.92 hours, with a maximum of 120.
+The harmonic mean of work value lost due to absenteeism is 93.68.
+This value represents the equivalent of 0.35 days lost on average per employee at 100% performance.

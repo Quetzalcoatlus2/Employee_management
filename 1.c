@@ -1,44 +1,48 @@
 /*
-  Realizati un program in C in care sa va folositi de un fisier cu date de intrare pentru proiect ce va contine minim 10 inregistrari.
-Rezumatul programului:
+  Build a C program that uses an input data file for the project containing at least 10 records.
+Program summary:
 
-1. Fisierul cu date de intrare contine 740 de inregistrari si 17 campuri.
-   Tema proiectului este absenteismul la munca, fisierul continand date despre 740 de angajati.
+1. The input data file contains 740 records and 17 fields.
+   The project topic is workplace absenteeism, and the file contains data about 740 employees.
 
-2. Datele din fisier sunt citite intr-o variabila de tip struct numita "absenteism" si sunt afisate in consola fara ca fisierul de intrare sa contina numarul de inregistrari.
+2. The data from the file is read into a struct variable named "absenteism" and displayed in the console,
+   even though the input file does not specify the number of records.
 
-3. Utilizatorul poate acum alege o varianta de ordonare crescatoare in care criteriul dupa care se face sortarea va aparea pe prima coloana din 3 optiuni sau poate trece mai departe fara sa aleaga un tip de ordonare:
-   a) dupa costul lunar de deplasare la locul de munca a fiecarui angajat
-   b) dupa numarul de ani de cand fiecare angajat lucreaza la firma
-   c) dupa numarul de ore absentat in anul precedent
-   Dupa fiecare ordonare aleasa, utilizatorul poate alege sa mai faca o ordonare.
-   Cand utilizatorul a facut toate ordonarile dorite, acesta poate merge mai departe.
+3. The user can choose an ascending sorting option where the selected sort criterion appears in the first column,
+   from 3 options, or continue without selecting a sorting type:
+   a) by each employee's monthly commuting cost
+   b) by the number of years each employee has worked at the company
+   c) by the number of hours absent in the previous year
+   After each selected sort, the user can choose to sort again.
+   When the user has finished all desired sorting operations, they can continue.
 
-4. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire cati angajati au absentat in fiecare luna si cati nu au absentat deloc.
+4. The program calculates, displays in the console, and writes to the output file how many employees
+   were absent in each month and how many were not absent at all.
 
-5. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire cati angajati au absentat in fiecare zi a saptamananii.
+5. The program calculates, displays in the console, and writes to the output file how many employees
+   were absent on each day of the week.
 
-6. Se calculeaza, se afiseaza in consola si se scrie in fisierul cu date de iesire, folosindu-te de functii utilizator (impartire, procentaj, maxim, minim, medie armonica) diverse date derivate:
-   -distanta medie parcursa de angajati lunar intre rezidenta si locul de munca;
-   -varsta medie la care angajatii s-au angajat la firma;
-   -valorile maxime si minime ale coeficientului mediu zilnic de munca (valoarea muncii depuse de fiecare angajat);
-   -randamentul mediu al angajatilor;
-   -procentul de angajati sanctionati disciplinar;
-   -procentul de consumatori de alcool;
-   -procentul de fumatori;
-   -numarul mediu de copii;
-   -numarul mediu de animale de companie;
-   -greutatea medie;
-   -inaltimea medie;
-   -numarul mediu absentat de angajati anul trecut;
-   -media armonica a coeficientului zilnic de munca pierdut din absente;
-   -cate zile a pierdut, in medie, fiecare angajat, considerandu-se un randament de 100%.
+6. The program calculates, displays in the console, and writes to the output file, using user-defined
+   functions (division, percentage, maximum, minimum, harmonic mean), several derived values:
+   - average monthly distance traveled by employees between residence and workplace;
+   - average age at which employees started working at the company;
+   - maximum and minimum values of the average daily work coefficient (work value of each employee);
+   - average employee performance;
+   - percentage of employees with disciplinary sanctions;
+   - percentage of alcohol consumers;
+   - percentage of smokers;
+   - average number of children;
+   - average number of pets;
+   - average weight;
+   - average height;
+   - average number of hours employees were absent last year;
+   - harmonic mean of the daily lost work coefficient from absences;
+   - average number of days lost by each employee, assuming 100% performance.
 
-7. Se reprezinta in modul grafic numarul de angajati absenti pentru fiecare luna a anului precedent.
+7. A graphical representation is generated for the number of absent employees in each month of the previous year.
 
-
-
-   Baza de date de unde au fost luate datele din fisierul de intrare (17 coloane din 21): https://data.world/aaizemberg/absenteeismatwork/workspace/file?filename=Absenteeism_at_work.tsv
+   Data source for the input file (17 columns out of 21):
+   https://data.world/aaizemberg/absenteeismatwork/workspace/file?filename=Absenteeism_at_work.tsv
 
 */
 
@@ -144,20 +148,20 @@ int main(int argc, char** argv) {
 
 
 	FILE *absenteism;
-	absenteism=fopen("intrare.txt", "r");
+	absenteism=fopen("input.txt", "r");
 
 	if(!absenteism){
-		printf("Eroare fisier!!!");
+		printf("File error!!!");
 		return 1;
 	}
 
 
 
-	printf("LUNA ABSENTEI     ZIUA DE INCEPUT A ABSENTEI DIN SAPTAMANA     COST LUNAR TRANSPORT     "
-			"DISTANTA REZIDENTA-SERVICIU     VECHIME LOC DE MUNCA ACTUAL     VARSTA     "
-			"COEFICIENT MEDIU ZILNIC DE MUNCA     RANDAMENT     SANCTIONAT DISCIPLINAR     "
-			"NIVEL EDUCATIE    NUMAR COPII     CONSUMATOR ALCOOL     FUMATOR     "
-			"NUMAR ANIMALE     GREUTATE     INALTIME     ORE ABSENTA\n");
+	printf("ABSENCE MONTH     ABSENCE START DAY OF WEEK     MONTHLY TRANSPORT COST     "
+			"RESIDENCE-WORK DISTANCE     YEARS AT CURRENT JOB     AGE     "
+			"AVERAGE DAILY WORK COEFFICIENT     PERFORMANCE     DISCIPLINARY SANCTIONED     "
+			"EDUCATION LEVEL    NUMBER OF CHILDREN     ALCOHOL CONSUMER     SMOKER     "
+			"NUMBER OF PETS     WEIGHT     HEIGHT     ABSENCE HOURS\n");
 
 
 
@@ -190,17 +194,17 @@ int main(int argc, char** argv) {
 
 
 
-	printf("\n\nNumarul de inregistrari este %d.", n);
+	printf("\n\nThe number of records is %d.", n);
 
 
 	do{
-	printf("\nAlegeti criteriul dupa care vreti sa faceti ordonarea datelor.\n"
-			"Daca doriti ordonarea dupa costul lunar de deplasare la locul de munca, apasati '1'.\n"
-			"Daca doriti ordonarea dupa numarul de ani de cand angajatii lucreaza la firma, apasati '2'.\n"
-			"Daca doriti ordonarea dupa numarul de ore absentate anul trecut, apasati '3'.\n"
-			"Dupa ordonare, puteti introduce din nou una dintre cele 3 cifre pentru o nous ordonare.\n"
-			"Daca sunteti multumit cu ordonarea/ordonarile facute sau daca nu doriti sa faceti vreo ordonare si doriti sa mergeti mai departe, apasati '0'.\n"
-			"Introduceti cifra corespunzatoare alegerii dumneavoastra:");
+	printf("\nChoose the criterion you want to use for sorting the data.\n"
+			"If you want sorting by monthly commuting cost, press '1'.\n"
+			"If you want sorting by years employees have worked at the company, press '2'.\n"
+			"If you want sorting by hours absent last year, press '3'.\n"
+			"After sorting, you can enter one of the 3 numbers again for another sort.\n"
+			"If you are satisfied with the sorting operations, or do not want to sort and want to continue, press '0'.\n"
+			"Enter the number corresponding to your choice:");
 
 	fflush(stdout);
 	scanf("%ld", &b);
@@ -227,11 +231,11 @@ int main(int argc, char** argv) {
 	}while(flag==1);
 
 
-		printf("\n\n\nCOST LUNAR TRANSPORT     LUNA ABSENTEI     ZIUA DE INCEPUT A ABSENTEI DIN SAPTAMANA     "
-							"DISTANTA REZIDENTA-SERVICIU     VECHIME LOC DE MUNCA ACTUAL     VARSTA     "
-							"COEFICIENT MEDIU ZILNIC DE MUNCA     RANDAMENT     SANCTIONAT DISCIPLINAR     "
-							"NIVEL EDUCATIE    NUMAR COPII     CONSUMATOR ALCOOL     FUMATOR     "
-							"NUMAR ANIMALE     GREUTATE     INALTIME     ORE ABSENTA\n");
+		printf("\n\n\nMONTHLY TRANSPORT COST     ABSENCE MONTH     ABSENCE START DAY OF WEEK     "
+							"RESIDENCE-WORK DISTANCE     YEARS AT CURRENT JOB     AGE     "
+							"AVERAGE DAILY WORK COEFFICIENT     PERFORMANCE     DISCIPLINARY SANCTIONED     "
+							"EDUCATION LEVEL    NUMBER OF CHILDREN     ALCOHOL CONSUMER     SMOKER     "
+							"NUMBER OF PETS     WEIGHT     HEIGHT     ABSENCE HOURS\n");
 
 
 
@@ -266,11 +270,11 @@ int main(int argc, char** argv) {
 		}while(flag==1);
 
 
-			printf("\n\n\nVECHIME LOC DE MUNCA ACTUAL     LUNA ABSENTEI     ZIUA DE INCEPUT A ABSENTEI DIN SAPTAMANA     "
-					"COST LUNAR TRANSPORT     DISTANTA REZIDENTA-SERVICIU     VARSTA     "
-						"COEFICIENT MEDIU ZILNIC DE MUNCA     RANDAMENT     SANCTIONAT DISCIPLINAR     "
-						"NIVEL EDUCATIE    NUMAR COPII     CONSUMATOR ALCOOL     FUMATOR     "
-						"NUMAR ANIMALE     GREUTATE     INALTIME     ORE ABSENTA\n");
+			printf("\n\n\nYEARS AT CURRENT JOB     ABSENCE MONTH     ABSENCE START DAY OF WEEK     "
+					"MONTHLY TRANSPORT COST     RESIDENCE-WORK DISTANCE     AGE     "
+						"AVERAGE DAILY WORK COEFFICIENT     PERFORMANCE     DISCIPLINARY SANCTIONED     "
+						"EDUCATION LEVEL    NUMBER OF CHILDREN     ALCOHOL CONSUMER     SMOKER     "
+						"NUMBER OF PETS     WEIGHT     HEIGHT     ABSENCE HOURS\n");
 
 
 
@@ -305,11 +309,11 @@ int main(int argc, char** argv) {
 				}while(flag==1);
 
 
-			printf("     \n\n\nORE ABSENTA     LUNA ABSENTEI     ZIUA DE INCEPUT A ABSENTEI DIN SAPTAMANA     COST LUNAR TRANSPORT     "
-						"DISTANTA REZIDENTA-SERVICIU     VECHIME LOC DE MUNCA ACTUAL     VARSTA     "
-						"COEFICIENT MEDIU ZILNIC DE MUNCA     RANDAMENT     SANCTIONAT DISCIPLINAR     "
-						"NIVEL EDUCATIE    NUMAR COPII     CONSUMATOR ALCOOL     FUMATOR     "
-						"NUMAR ANIMALE     GREUTATE     INALTIME\n");
+			printf("     \n\n\nABSENCE HOURS     ABSENCE MONTH     ABSENCE START DAY OF WEEK     MONTHLY TRANSPORT COST     "
+						"RESIDENCE-WORK DISTANCE     YEARS AT CURRENT JOB     AGE     "
+						"AVERAGE DAILY WORK COEFFICIENT     PERFORMANCE     DISCIPLINARY SANCTIONED     "
+						"EDUCATION LEVEL    NUMBER OF CHILDREN     ALCOHOL CONSUMER     SMOKER     "
+						"NUMBER OF PETS     WEIGHT     HEIGHT\n");
 
 
 			         for(i=0; i<n-1; i++)
@@ -335,7 +339,7 @@ int main(int argc, char** argv) {
 
 
 
-    printf("\n\nIntroduceti orice cifra pentru a continua cu numarul de angajati ce au absentat intr-una din lunile anului:");
+    printf("\n\nEnter any number to continue with the number of employees absent in each month of the year:");
     fflush(stdout);
     scanf("%ld", &b);
     printf("\n");
@@ -388,25 +392,25 @@ int main(int argc, char** argv) {
 
 
     FILE *absenteism_concluzii;
-    absenteism_concluzii=fopen("iesire.txt", "w");
+    absenteism_concluzii=fopen("output.txt", "w");
 
     if(!absenteism_concluzii){
-	    printf("Eroare la crearea fisierului!!!");
+	    printf("Error creating file!!!");
 	    return 1;
 	    }
 
 
 
     for(i=0; i<12; i++){
-	    printf("In luna numarul %2d a anului trecut au absentat %d angajati.\n", i+1, luni[i]);
-	    fprintf(absenteism_concluzii, "In luna numarul %2d a anului trecut au absentat %d angajati.\n", i+1, luni[i]);}
+	    printf("In month number %2d of last year, %d employees were absent.\n", i+1, luni[i]);
+	    fprintf(absenteism_concluzii, "In month number %2d of last year, %d employees were absent.\n", i+1, luni[i]);}
 
 
-    printf("Au fost %d angajati care nu au absentat nici macar o ora anul trecut.\n", luni[12]);
-    fprintf(absenteism_concluzii, "Au fost %d angajati care nu au absentat nici macar o ora anul trecut.\n", luni[12]);
+    printf("There were %d employees who were not absent for even one hour last year.\n", luni[12]);
+    fprintf(absenteism_concluzii, "There were %d employees who were not absent for even one hour last year.\n", luni[12]);
 
 
-	printf("\n\nIntroduceti orice cifra pentru a continua cu numarul de angajati a caror absentare a inceput intr-o anumita zi a saptamanii:");
+	printf("\n\nEnter any number to continue with the number of employees whose absence started on a given weekday:");
 	fflush(stdout);
     scanf("%ld", &b);
 
@@ -443,61 +447,61 @@ int main(int argc, char** argv) {
 
 
     for(i=0; i<5; i++){
-	    printf("\nIn ziua %d a saptamanii a inceput absentarea pentru %3d angajati.", i+1, h[i]);
-	    fprintf(absenteism_concluzii, "In ziua %d a saptamanii a inceput absentarea pentru %3d angajati.\n", i+1, h[i]);}
+	    printf("\nOn day %d of the week, absence started for %3d employees.", i+1, h[i]);
+	    fprintf(absenteism_concluzii, "On day %d of the week, absence started for %3d employees.\n", i+1, h[i]);}
 
 
-    printf("\n\n\nIntroduceti orice cifra pentru a continua cu alte date derivate din datele de intrare:");
+    printf("\n\n\nEnter any number to continue with other values derived from the input data:");
     	fflush(stdout);
         scanf("%d", &i);
 
 
 
-	printf("\nDistanta medie pe care angajatii o parcurg de acasa la locul de munca lunar este %.2f kilometri.\n", div(b,n));
-    fprintf(absenteism_concluzii,"\n\n\nDistanta medie pe care angajatii o parcurg de acasa la locul de munca lunar este %.2f kilometri.\n", div(b,n));
+	printf("\nThe average monthly distance employees travel from home to work is %.2f kilometers.\n", div(b,n));
+    fprintf(absenteism_concluzii,"\n\n\nThe average monthly distance employees travel from home to work is %.2f kilometers.\n", div(b,n));
 
-	printf("Varsta medie a angajatilor la care au inceput sa lucreze la firma este %.2f lei.\n", div(d,n));
-	fprintf(absenteism_concluzii, "Varsta medie a angajatilor la care au inceput sa lucreze la firma este %.2f lei.\n", div(b,n));
+	printf("The average age at which employees started working at the company is %.2f years.\n", div(d,n));
+	fprintf(absenteism_concluzii, "The average age at which employees started working at the company is %.2f years.\n", div(d,n));
 
-	printf("Coeficientul mediu zilnic de munca (valoarea muncii depuse de fiecare angajat) variaza intre %.6f si %.6f.\n", minim, maxim);
-	fprintf(absenteism_concluzii, "Coeficientul mediu zilnic de munca (nivelul de dificultate) variaza intre %.6f si %.6f.\n", minim, maxim);
+	printf("The average daily work coefficient (work value contributed by each employee) ranges between %.6f and %.6f.\n", minim, maxim);
+	fprintf(absenteism_concluzii, "The average daily work coefficient (difficulty level) ranges between %.6f and %.6f.\n", minim, maxim);
 
-    printf("Randamentul mediu al angajatilor este %.2f%%.\n", div(c, n));
-	fprintf(absenteism_concluzii, "Randamentul mediu al angajatilor este %.2f%%.\n", div(c, n));
+    printf("The average employee performance is %.2f%%.\n", div(c, n));
+	fprintf(absenteism_concluzii, "The average employee performance is %.2f%%.\n", div(c, n));
 
-	printf("Procentul de angajati sanctionati disciplinar este %.2f%%.\n", proc(e, n));
-	fprintf(absenteism_concluzii, "Procentul de angajati sanctionati disciplinar este %.2f%%.\n", proc(e, n));
+	printf("The percentage of employees with disciplinary sanctions is %.2f%%.\n", proc(e, n));
+	fprintf(absenteism_concluzii, "The percentage of employees with disciplinary sanctions is %.2f%%.\n", proc(e, n));
 
-	printf("Procentul de angajati consumatori de alcool este %.2f%%.\n", proc(g, n));
-	fprintf(absenteism_concluzii,"Procentul de angajati consumatori de alcool este %.2f%%.\n", proc(g, n));
+	printf("The percentage of employees who consume alcohol is %.2f%%.\n", proc(g, n));
+	fprintf(absenteism_concluzii,"The percentage of employees who consume alcohol is %.2f%%.\n", proc(g, n));
 
-	printf("Procentul de angajati fumatori este %.2f%%.\n", proc(k, n));
-	fprintf(absenteism_concluzii, "Procentul de angajati fumatori este %.2f%%.\n", proc(k, n));
+	printf("The percentage of employees who smoke is %.2f%%.\n", proc(k, n));
+	fprintf(absenteism_concluzii, "The percentage of employees who smoke is %.2f%%.\n", proc(k, n));
 
-	printf("Angajatii au in medie %.2f copii.\n", div(f, n));
-	fprintf(absenteism_concluzii, "Angajatii au in medie %.2f copii.\n",  div(f, n));
+	printf("Employees have an average of %.2f children.\n", div(f, n));
+	fprintf(absenteism_concluzii, "Employees have an average of %.2f children.\n",  div(f, n));
 
-	printf("Angajatii au in medie %.2f animale de companie.\n",  div(l, n));
-	fprintf(absenteism_concluzii, "Angajatii au in medie %.2f animale de companie.\n",  div(l, n));
+	printf("Employees have an average of %.2f pets.\n",  div(l, n));
+	fprintf(absenteism_concluzii, "Employees have an average of %.2f pets.\n",  div(l, n));
 
-	printf("Angajatii au in medie %.2f kilograme.\n",  div(m, n));
-	fprintf(absenteism_concluzii, "Angajatii au in medie %.2f kilograme.\n", div(m, n));
+	printf("Employees have an average weight of %.2f kilograms.\n",  div(m, n));
+	fprintf(absenteism_concluzii, "Employees have an average weight of %.2f kilograms.\n", div(m, n));
 
-	printf("Inaltimea medie a angajatilor este %.2f centimetri.\n",  div(o, n));
-	fprintf(absenteism_concluzii, "Inaltimea medie a angajatilor este %.2f centimetri.\n",  div(o, n));
+	printf("The average employee height is %.2f centimeters.\n",  div(o, n));
+	fprintf(absenteism_concluzii, "The average employee height is %.2f centimeters.\n",  div(o, n));
 
-	printf("Numarul mediu de ore pe care angajatii l-au absentat anul trecut este %.2f ore, maximul fiind %d.\n", div(p, n), max_ore);
-	fprintf(absenteism_concluzii, "Numarul mediu de ore pe care angajatii l-au absentat anul trecut este %.2f ore, maximul fiind %d.\n",  div(p, n), max_ore);
+	printf("The average number of hours employees were absent last year is %.2f hours, with a maximum of %d.\n", div(p, n), max_ore);
+	fprintf(absenteism_concluzii, "The average number of hours employees were absent last year is %.2f hours, with a maximum of %d.\n",  div(p, n), max_ore);
 
-	printf("Media armonica a valorii muncii pierdute din cauza absentarii este %.2f.\n", (float)n/armonic_pierderi);
-	fprintf(absenteism_concluzii, "Media armonica a valorii muncii pierdute din cauza absentarii este %.2f.\n", (float)n/armonic_pierderi);
+	printf("The harmonic mean of work value lost due to absenteeism is %.2f.\n", (float)n/armonic_pierderi);
+	fprintf(absenteism_concluzii, "The harmonic mean of work value lost due to absenteeism is %.2f.\n", (float)n/armonic_pierderi);
 
-	printf("Aceasta valoare reprezinta echivalentul a %.2f zile pierdute de fiecare angajat in medie cu un randament de 100%%.", (float)n/armonic_pierderi/(n/armonic_coef));
-	fprintf(absenteism_concluzii, "Aceasta valoare reprezinta echivalentul a %.2f zile pierdute de fiecare angajat in medie cu un randament de 100%%.", (float)n/armonic_pierderi/(n/armonic_coef));
+	printf("This value represents the equivalent of %.2f days lost on average per employee at 100%% performance.", (float)n/armonic_pierderi/(n/armonic_coef));
+	fprintf(absenteism_concluzii, "This value represents the equivalent of %.2f days lost on average per employee at 100%% performance.", (float)n/armonic_pierderi/(n/armonic_coef));
 
 
 
-	printf("\n\n\nIntroduceti orice cifra pentru a continua cu reprezentarea grafica a numarului de angajati ce au absentat in fiecare luna a anului:");
+	printf("\n\n\nEnter any number to continue with the graphical representation of the number of employees absent in each month of the year:");
 	    	fflush(stdout);
 	        scanf("%d", &i);
 
@@ -548,14 +552,14 @@ int main(int argc, char** argv) {
 			glutBitmapCharacter(8, string[j]);
 
 		glRasterPos2f(0.72, -0.96);
-		strcpy(string, "Fara absente!");
+		strcpy(string, "No absences!");
 		for(j=0;j<strlen(string);j++)
 			glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, string[j]);
 
 
 		glColor4f(1.0f, 0.7f, -0.4f, 0.15f);
 				glRasterPos2f(-0.6, 0.9);
-				strcpy(string, "Reprezentare grafica a celor 740 de angajati pe baza lunii anului in care a avut loc absentarea.");
+				strcpy(string, "Graphical representation of 740 employees based on the month in which absence occurred.");
 				for(i=0; i<strlen(string); i++)
 					glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, string[i]);
 
@@ -568,12 +572,11 @@ int main(int argc, char** argv) {
 	glutInit(&argc, argv);
 		glutInitWindowSize(500, 500);
 		glutInitWindowPosition(1000, 300);
-		glutCreateWindow("Lunile anului");
+		glutCreateWindow("Months of the year");
 		glutDisplayFunc(display);
 		glutMainLoop();
 
 
 	return 0;
 }
-
 
